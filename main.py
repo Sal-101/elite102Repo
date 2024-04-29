@@ -7,8 +7,12 @@ import functions as func
 conn = sqlite3.connect('bank.db')
 cursor = conn.cursor()
 
+
+#ERROR: can't find database???? however sources said it should be 
 #2: CREATE TABLE
-cursor.execute('''create table if not exists bank.accounts(name text, password text, email text, balance real)''')
+cursor.execute('''CREATE TABLE IF NOT EXISTS bank (name text, password text, email text, balance real);''')
+
+
 
 #3: MAIN INTERFACE FUNCS
 def main_menu_interface():
@@ -54,3 +58,7 @@ def main():
   user_choice()
 
 main()
+
+
+
+#major thanks to geeksforgeeks.org you were a great help in figuring out sqlite even though this isn't fully functional!!!!!
