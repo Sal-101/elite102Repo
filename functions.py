@@ -13,6 +13,10 @@ def add_user():
   
   #add user to database
   cursor.execute(f'''INSERT INTO bank(name, password, email, balance) VALUES('{user_name}', '{user_password}', '{user_email}', {user_init_balance})''')
+  #show updates
+  cursor.execute('''SELECT * FROM bank''')
+  update = cursor.fetchall()
+  print(update)
 
 
 ##DELETE USER ACC
@@ -25,8 +29,13 @@ def delete_user():
     cursor.execute(f'''DELETE FROM bank WHERE name = '{test_username}' AND password = '{test_password}' ''')
   else:
     print("Account not found. Username and/or password may be incorrect!")
-  
-  
+
+  #show updates
+  cursor.execute('''SELECT * FROM bank''')
+  update = cursor.fetchall()
+  print(update)
+
+
 #MODIFY ACC
 def modify_user():
   test_username = input("Enter the username of the account you want to modify: ")
@@ -44,6 +53,11 @@ def modify_user():
   else:
     print("Account not found. Username and/or password may be incorrect!")
 
+  #show updates
+  cursor.execute('''SELECT * FROM bank''')
+  update = cursor.fetchall()
+  print(update)
+
 
 ##DEPOSIT
 def deposit():
@@ -57,6 +71,11 @@ def deposit():
     print("Deposit completed! Check your balance!")
   else:
     print("Account not found. Username and/or password may be incorrect!")
+
+  #show updates
+  cursor.execute('''SELECT * FROM bank''')
+  update = cursor.fetchall()
+  print(update)
 
 
 ##WITHDRAW
@@ -72,6 +91,11 @@ def withdrawal():  #set up similar to deposit(), except subtract from balance!
   else:
     print("Account not found. Username and/or password may be incorrect!")
 
+  #show updates
+  cursor.execute('''SELECT * FROM bank''')
+  update = cursor.fetchall()
+  print(update)
+  
 
 ##CHECK BALANCE
 def check_user_balance():
@@ -83,5 +107,10 @@ def check_user_balance():
     print(f"Your balance is {cursor.execute(f'''SELECT balance FROM bank WHERE name = '{test_username}' AND password = '{test_password}' ''')}")
   else:
     print("Account not found. Username and/or password may be incorrect!")
+
+  #show updates
+  cursor.execute('''SELECT * FROM bank''')
+  update = cursor.fetchall()
+  print(update)
 
 
