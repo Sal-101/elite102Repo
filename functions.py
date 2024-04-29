@@ -1,3 +1,4 @@
+import unittest #importing the unittest module for usage at the bottom
 import sqlite3
 conn = sqlite3.connect('bank.db')
 cursor = conn.cursor()
@@ -17,6 +18,7 @@ def add_user():
   cursor.execute('''SELECT * FROM bank''')
   update = cursor.fetchall()
   print(update)
+  print("Your account has been added!")
 
 
 ##DELETE USER ACC
@@ -34,6 +36,7 @@ def delete_user():
   cursor.execute('''SELECT * FROM bank''')
   update = cursor.fetchall()
   print(update)
+  print("Your account has been deleted!")
 
 
 #MODIFY ACC
@@ -57,6 +60,7 @@ def modify_user():
   cursor.execute('''SELECT * FROM bank''')
   update = cursor.fetchall()
   print(update)
+  print("Your account has been updated!")
 
 
 ##DEPOSIT
@@ -108,9 +112,17 @@ def check_user_balance():
   else:
     print("Account not found. Username and/or password may be incorrect!")
 
-  #show updates
-  cursor.execute('''SELECT * FROM bank''')
-  update = cursor.fetchall()
-  print(update)
 
 
+
+
+
+
+###(an attempt at) TESTS
+class Test(unittest.TestCase):
+  def test_add_user(self):
+    self.assertEqual(add_user(), "Account added!") 
+  def test_modify_user(self):
+    self.assertTrue(modify_user(), "Account updated!")
+  def test_deposit(self):
+    self.assertTrue(deposit(), "Deposit completed!")
