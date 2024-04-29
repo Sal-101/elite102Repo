@@ -1,4 +1,4 @@
-#IMPORT FUNCS + SQLITE + RUN COMMAND
+#IMPORT FUNCS + SQLITE
 import sqlite3
 import functions as func
 
